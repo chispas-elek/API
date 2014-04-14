@@ -3,6 +3,7 @@ package org.api.packwhatsaudit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ListaPreguntas {
 
@@ -23,17 +24,19 @@ public class ListaPreguntas {
 			while (rs.next()) {
 				lPreguntas.add(new Pregunta(rs.getInt("idPregunta"), rs.getString("nombrePregunta"), rs.getInt("idAuditoria")));
 			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return lPreguntas;
 	}
 	
-	public void anadirPregunta(Pregunta pPregunta, Auditoria pAudit) {
+	public void anadirPregunta(int pIdAudit) {
 		Conector conector = Conector.getConector();
-		String consulta = "INSERT INTO pregunta VALUES ('"+pPregunta.getTexto()+"',"+pAudit.getId()+");";
-		conector.execSQL(consulta);
+		Iterator<Pregunta> itr = lPreguntas.iterator();
+		while(itr.hasNext()) {
+			Pregunta unaPregunta = itr.next();
+			String consulta = "INSERT INTO pregunta ('nombrePregunta','idAuditoria') VALUES ('"+unaPregunta.getTexto()+"',"+pIdAudit+");";
+			conector.execSQL(consulta);
+		}
 	}
-	
-	
 }

@@ -1,10 +1,13 @@
 package org.api.packwhatsaudit;
 
 public class Pregunta {
+	
+	//ATRIBUTOS
 	private int id;
 	private String texto;
 	private int idAuditoria;
 	
+	//MÉTODO CONSTRUCTOR
 	public Pregunta(int id, String texto, int idAuditoria) {
 		super();
 		this.id = id;
@@ -12,6 +15,7 @@ public class Pregunta {
 		this.idAuditoria = idAuditoria;
 	}
 
+	//GETTERS Y SETTERS
 	public int getId() {
 		return id;
 	}
@@ -35,7 +39,4 @@ public class Pregunta {
 	public void setIdAuditoria(int idAuditoria) {
 		this.idAuditoria = idAuditoria;
 	}
-	
-	
-
 }

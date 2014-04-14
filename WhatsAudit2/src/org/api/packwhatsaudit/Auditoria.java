@@ -2,18 +2,18 @@ package org.api.packwhatsaudit;
 
 public class Auditoria {
 
-//	ATRIBUTOS
+	//ATRIBUTOS
 	private int id;
 	private String nombre;
 
-//	MÉTODO CONSTRUCTOR	
+	//MÉTODO CONSTRUCTOR	
 	public Auditoria(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
 
-//	GETTERS Y SETTERS	
+	//GETTERS Y SETTERS	
 	public int getId() {
 		return id;
 	}
@@ -21,7 +21,7 @@ public class Auditoria {
 	public String getNombre() {
 		return nombre;
 	}
-	
-//	MÉTODOS DEFINIDOS	
-	
+
+	//MÉTODOS DEFINIDOS	
+
 }
