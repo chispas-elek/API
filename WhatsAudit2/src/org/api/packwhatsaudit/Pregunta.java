@@ -9,7 +9,6 @@ public class Pregunta {
 	
 	//MÉTODO CONSTRUCTOR
 	public Pregunta(int id, String texto, int idAuditoria) {
-		super();
 		this.id = id;
 		this.texto = texto;
 		this.idAuditoria = idAuditoria;

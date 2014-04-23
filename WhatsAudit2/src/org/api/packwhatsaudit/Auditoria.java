@@ -6,10 +6,14 @@ public class Auditoria {
 	private int id;
 	private String nombre;
 
-	//MÉTODO CONSTRUCTOR	
+	//MÉTODOS CONSTRUCTORES
 	public Auditoria(int id, String nombre) {
-		super();
 		this.id = id;
+		this.nombre = nombre;
+	}
+	
+	public Auditoria(String nombre) {
+		super();
 		this.nombre = nombre;
 	}
 
@@ -21,7 +25,4 @@ public class Auditoria {
 	public String getNombre() {
 		return nombre;
 	}
-
-	//MÉTODOS DEFINIDOS	
-
 }

@@ -15,27 +15,34 @@ public class ListaPreguntas {
 		this.lPreguntas = new ArrayList<Pregunta>();
 	}
 	
+	public ArrayList<Pregunta> getlPreguntas() {
+		return lPreguntas;
+	}
+
 	//MÉTODOS DEFINIDOS
+	//OK
 	public ArrayList<Pregunta> obtenerPreguntasAuditoria(int pIdAuditoria) {
 		try {
 			Conector conector = Conector.getConector();
-			String consulta = "SELECT idPregunta, nombrePregunta, idAuditoria FROM pregunta where idAuditoria=" + pIdAuditoria;
+			String consulta = "SELECT * FROM pregunta where idAuditoria=" + pIdAuditoria;
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
 				lPreguntas.add(new Pregunta(rs.getInt("idPregunta"), rs.getString("nombrePregunta"), rs.getInt("idAuditoria")));
 			}
+			conector.conexion.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return lPreguntas;
 	}
 	
-	public void anadirPregunta(int pIdAudit) {
+	//OK
+	public void anadirPreguntas(int pIdAudit) {
 		Conector conector = Conector.getConector();
 		Iterator<Pregunta> itr = lPreguntas.iterator();
 		while(itr.hasNext()) {
 			Pregunta unaPregunta = itr.next();
-			String consulta = "INSERT INTO pregunta ('nombrePregunta','idAuditoria') VALUES ('"+unaPregunta.getTexto()+"',"+pIdAudit+");";
+			String consulta = "INSERT INTO pregunta (nombrePregunta, idAuditoria) VALUES ('"+unaPregunta.getTexto()+"',"+pIdAudit+");";
 			conector.execSQL(consulta);
 		}
 	}

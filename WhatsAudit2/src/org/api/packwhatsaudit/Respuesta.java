@@ -13,11 +13,8 @@ public class Respuesta {
 	private int idPregunta;
 	private GregorianCalendar fecha;
 	
-	
-	public Respuesta(int idRespuesta, boolean respuestaUno,
-			boolean respuestaDos, boolean respuestaTres, String respuestaTexto,
-			int idPregunta) {
-		super();
+	//MÉTODO CONSTRUCTOR
+	public Respuesta(int idRespuesta, boolean respuestaUno, boolean respuestaDos, boolean respuestaTres, String respuestaTexto, int idPregunta) {
 		this.idRespuesta = idRespuesta;
 		this.respuestaUno = respuestaUno;
 		this.respuestaDos = respuestaDos;
@@ -27,6 +24,7 @@ public class Respuesta {
 		this.fecha = new GregorianCalendar();
 	}
 	
+	//GETTERS Y SETTERS
 	public int getIdRespuesta() {
 		return idRespuesta;
 	}

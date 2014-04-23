@@ -1,6 +1,7 @@
 package org.api.packwhatsaudit;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class GestorAuditoria {
 
@@ -27,21 +28,26 @@ public class GestorAuditoria {
 	}
 
 	//MÉTODOS DEFINIDOS
+	//OK
 	public ArrayList<Auditoria> obtenerAuditorias() {
 		return lista.obtenerAuditoria();
 	}
 	
+	//OK
 	public void anadirAuditoria(Auditoria pAudit, ListaPreguntas pLPreg) {
-		lista.anadirAuditoria(pAudit);
-		pLPreg.anadirPregunta(pAudit.getId());
+		int idAudit = lista.anadirAuditoria(pAudit);
+		pLPreg.anadirPreguntas(idAudit);
 	}
 
+	//OK
 	public ArrayList<Pregunta> obtenerPreguntasAuditoria(int pIdAuditoria) {
 		ListaPreguntas lPreguntas = new ListaPreguntas();
 		return lPreguntas.obtenerPreguntasAuditoria(pIdAuditoria);
 	}
 	
-	public ArrayList<Respuesta> obtenerRespuestasAuditoria(int pIdAuditoria) {
-		return null;
+	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, GregorianCalendar pFecha) {
+		ListaRespuestas lRespuestas = new ListaRespuestas();
+	    ArrayList<Pregunta> lPreguntas = this.obtenerPreguntasAuditoria(pIdAuditoria);
+		return lRespuestas.obtenerRespuestasAuditoria(lPreguntas, pFecha);
 	}
 }

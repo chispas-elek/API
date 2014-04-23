@@ -3,6 +3,7 @@ package org.api.packwhatsaudit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 public class ListaRespuestas {
@@ -14,22 +15,30 @@ public class ListaRespuestas {
 	public ListaRespuestas() {
 		this.lRespuestas = new ArrayList<Respuesta>();
 	}
-	
+
+	public ArrayList<Respuesta> getlRespuestas() {
+		return lRespuestas;
+	}
+
 	//MÉTODOS DEFINIDOS
-	public ArrayList<Respuesta> obtenerRespuestasAuditoria(int pIdAuditoria) {
+	public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
 		try {
 			Conector conector = Conector.getConector();
-			String consulta = "SELECT idPregunta, nombrePregunta, idAuditoria FROM pregunta where idAuditoria=" + pIdAuditoria;
-			ResultSet rs = conector.execSQL(consulta);
-			while (rs.next()) {
-				//lRespuestas.add(new Pregunta(rs.getInt("idPregunta"), rs.getString("nombrePregunta"), rs.getInt("idAuditoria")));
+			Iterator<Pregunta> itr = pListaP.iterator();
+			while (itr.hasNext()) {
+				String consulta = "SELECT *  FROM respuesta WHERE idPregunta=" + itr.next().getId() + " AND fecha='" + pFecha + "';";
+				ResultSet rs = conector.execSQL(consulta);
+				while (rs.next()) {
+					lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getBoolean("respuestaUno"), rs.getBoolean("respuestaDos"), rs.getBoolean("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta")));
+				}
 			}
+			conector.conexion.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return lRespuestas;
 	}
-	
+
 	public void anadirRespuesta(int pIdAudit, int pIdPregunta) {
 		Conector conector = Conector.getConector();
 		Iterator<Respuesta> itr = lRespuestas.iterator();
