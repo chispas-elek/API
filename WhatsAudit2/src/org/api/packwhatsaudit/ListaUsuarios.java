@@ -53,4 +53,20 @@ public class ListaUsuarios {
 		conector.execSQL(inserccion);
 		return numeroFilas;
 	}
+
+	//devuelve 0 admin 1 usuario -1 error
+	public int comprobarUsuario(String pNombre, String pContraseña) {
+		Conector conector = Conector.getConector();
+		int tipo = -1;
+		try {
+			String consulta = "SELECT tipo FROM usuario WHERE nombre='" + pNombre + "' AND contraseña='" + pContraseña + "';";
+			ResultSet rs = conector.execSQL(consulta);
+			while (rs.next()) {
+				tipo = rs.getInt("tipo");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tipo;
+	}
 }
