@@ -8,12 +8,16 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class I_Usuario {
 
 	//ATRIBUTOS
 	private static I_Usuario miIUsuario;
 	private static JFrame frame;
+	private JLabel labelAuditorias;
 	private JScrollPane scrollPane;
 	private static JList<String> lista;
 	private static DefaultListModel<String> modeloLista;
@@ -47,6 +51,11 @@ public class I_Usuario {
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
+		labelAuditorias = new JLabel("Auditorias disponibles:");
+		labelAuditorias.setHorizontalAlignment(SwingConstants.CENTER);
+		labelAuditorias.setFont(new Font("Arial Black", Font.PLAIN, 11));
+		labelAuditorias.setBounds(37, 29, 243, 14);
+		
 		modeloLista = new DefaultListModel<String>();
 		ControladorUsuario.getMiControladorUsuario().introducirAuditorias();
 
@@ -66,10 +75,10 @@ public class I_Usuario {
 		});
 
 		botonHistorico = new JButton("Histórico de auditorias");
-		botonHistorico.setBounds(382, 231, 158, 23);
+		botonHistorico.setBounds(382, 231, 180, 23);
 		botonHistorico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				I_Usuario_Historico.getMiIUsuarioHistorico();
 			}
 		});
 		
@@ -80,6 +89,7 @@ public class I_Usuario {
 		frame.getContentPane().add(scrollPane);
 		frame.getContentPane().add(botonRellenar);
 		frame.getContentPane().add(botonHistorico);
+		frame.getContentPane().add(labelAuditorias);
 		frame.setVisible(true);
 	}
 

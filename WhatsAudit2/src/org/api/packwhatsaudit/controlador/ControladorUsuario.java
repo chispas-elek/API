@@ -38,7 +38,8 @@ public class ControladorUsuario {
 			JOptionPane.showMessageDialog(null, "Selecciona un valor", "¡Atención!", JOptionPane.ERROR_MESSAGE);
 		} else {
 			I_Usuario.getFrame().dispose();
-			I_Usuario_Auditoria.getMiIRellenar();
+			I_Usuario_Auditoria.getMiIUsuarioAuditoria();
+			ControladorUsuarioAuditoria.setNumeroAuditoria(I_Usuario);;
 		}
 	}
 }

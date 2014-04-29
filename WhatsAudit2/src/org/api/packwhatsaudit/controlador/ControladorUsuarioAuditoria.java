@@ -4,6 +4,7 @@ public class ControladorUsuarioAuditoria {
 
 	//ATRIBUTOS
 	private static ControladorUsuarioAuditoria miControladorUsuarioAuditoria;
+	private static int numeroAuditoria;
 
 	//MÉTODO CONSTRUCTOR
 	private ControladorUsuarioAuditoria() {
@@ -16,5 +17,13 @@ public class ControladorUsuarioAuditoria {
 			miControladorUsuarioAuditoria = new ControladorUsuarioAuditoria();
 		}
 		return miControladorUsuarioAuditoria;
+	}
+
+	public static int getNumeroAuditoria() {
+		return numeroAuditoria;
+	}
+
+	public static void setNumeroAuditoria(int numeroAuditoria) {
+		ControladorUsuarioAuditoria.numeroAuditoria = numeroAuditoria;
 	}
 }

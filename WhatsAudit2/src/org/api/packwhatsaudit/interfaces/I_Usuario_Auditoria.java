@@ -7,14 +7,14 @@ public class I_Usuario_Auditoria {
 	//ATRIBUTOS
 	private static I_Usuario_Auditoria miIUsuarioAuditoria;
 	private JFrame frame;
-
+	
 	//MÉTODO CONSTRUCTOR	
 	private I_Usuario_Auditoria() {
 		inicializarVentana();
 	}
 
 	//GETTERS Y SETTERS
-	public static I_Usuario_Auditoria getMiIRellenar() {
+	public static I_Usuario_Auditoria getMiIUsuarioAuditoria() {
 		if (miIUsuarioAuditoria == null) {
 			miIUsuarioAuditoria = new I_Usuario_Auditoria();
 		}
@@ -24,7 +24,7 @@ public class I_Usuario_Auditoria {
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}

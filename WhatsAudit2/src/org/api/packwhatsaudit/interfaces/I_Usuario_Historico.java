@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class I_Usuario_Historico {
 
 	//ATRIBUTOS
-	private I_Usuario_Historico miIUsuarioHistorico;
+	private static I_Usuario_Historico miIUsuarioHistorico;
 	private JFrame frame;
 
 	//MÉTODO CONSTRUCTOR
@@ -14,7 +14,7 @@ public class I_Usuario_Historico {
 	}
 
 	//GETTERS Y SETTERS
-	public I_Usuario_Historico getMiIUsuarioHistorico() {
+	public static I_Usuario_Historico getMiIUsuarioHistorico() {
 		if (miIUsuarioHistorico == null) {
 			miIUsuarioHistorico = new I_Usuario_Historico();
 		}
@@ -24,7 +24,7 @@ public class I_Usuario_Historico {
 	//MÉTODOS DEFINIDOS
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
