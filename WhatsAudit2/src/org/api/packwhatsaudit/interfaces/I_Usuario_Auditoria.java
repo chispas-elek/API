@@ -2,23 +2,23 @@ package org.api.packwhatsaudit.interfaces;
 
 import javax.swing.JFrame;
 
-public class I_Rellenar {
+public class I_Usuario_Auditoria {
 
 	//ATRIBUTOS
-	private static I_Rellenar miIRellenar;
+	private static I_Usuario_Auditoria miIUsuarioAuditoria;
 	private JFrame frame;
 
 	//MÉTODO CONSTRUCTOR	
-	private I_Rellenar() {
+	private I_Usuario_Auditoria() {
 		inicializarVentana();
 	}
 
 	//GETTERS Y SETTERS
-	public static I_Rellenar getMiIRellenar() {
-		if (miIRellenar == null) {
-			miIRellenar = new I_Rellenar();
+	public static I_Usuario_Auditoria getMiIRellenar() {
+		if (miIUsuarioAuditoria == null) {
+			miIUsuarioAuditoria = new I_Usuario_Auditoria();
 		}
-		return miIRellenar;
+		return miIUsuarioAuditoria;
 	}
 
 	//MÉTODOS DEFINIDOS
