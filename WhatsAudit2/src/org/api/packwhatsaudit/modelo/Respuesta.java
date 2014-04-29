@@ -1,4 +1,4 @@
-package org.api.packwhatsaudit;
+package org.api.packwhatsaudit.modelo;
 
 import java.util.GregorianCalendar;
 

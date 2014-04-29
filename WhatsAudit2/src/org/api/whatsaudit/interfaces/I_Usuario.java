@@ -3,13 +3,14 @@ package org.api.whatsaudit.interfaces;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.api.packwhatsaudit.*;
+import org.api.packwhatsaudit.modelo.*;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
