@@ -2,8 +2,11 @@ package org.api.packwhatsaudit.controlador;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import javax.swing.JOptionPane;
+
 import org.api.packwhatsaudit.interfaces.I_Administrador;
+import org.api.packwhatsaudit.interfaces.I_Definicion_Auditoria;
 import org.api.packwhatsaudit.interfaces.I_Usuario;
 import org.api.packwhatsaudit.modelo.Auditoria;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
@@ -42,5 +45,10 @@ public class ControladorAdministrador {
 			int numeroAuditoria = (I_Usuario.getLista().getSelectedIndex())+1;
 			//metodo de borrar auditoria
 		}
+	}
+	
+	public void añadirAuditoria() {
+		I_Administrador.getFrame().dispose();
+		I_Definicion_Auditoria.getMiIDefinicion_Auditoria();
 	}
 }

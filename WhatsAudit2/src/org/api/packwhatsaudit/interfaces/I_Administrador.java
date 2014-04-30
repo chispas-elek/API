@@ -61,7 +61,7 @@ public class I_Administrador {
 		botonNuevo.setBounds(236, 9, 148, 23);
 		botonNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControladorAdministrador.getMiControladorAdministrador().añadirAuditoria();
 			}
 		});
 		
