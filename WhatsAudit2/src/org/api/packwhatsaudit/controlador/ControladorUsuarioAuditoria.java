@@ -2,11 +2,9 @@ package org.api.packwhatsaudit.controlador;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
 import org.api.packwhatsaudit.modelo.Pregunta;
@@ -59,7 +57,6 @@ public class ControladorUsuarioAuditoria {
 			grupoBotones.add(botonSi);
 			grupoBotones.add(botonNoSe);
 			grupoBotones.add(botonNo);
-			JTextField zonaObservaciones = new JTextField();
 			datos[i] = (new Object[] {preguntaActual.getId(), preguntaActual.getTexto(), new Boolean(false), new Boolean(false), new Boolean(false), ""});
 			i++;
 		}
