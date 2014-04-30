@@ -62,7 +62,7 @@ public class I_Usuario {
 		lista = new JList<String>();
 		lista.setModel(modeloLista);
 
-		scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane(lista);
 		scrollPane.setBounds(37, 54, 243, 200);
 		scrollPane.setViewportView(lista);
 

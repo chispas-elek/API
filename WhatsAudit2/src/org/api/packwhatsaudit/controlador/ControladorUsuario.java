@@ -37,9 +37,10 @@ public class ControladorUsuario {
 		if (I_Usuario.getLista().getSelectedValue() == null) {
 			JOptionPane.showMessageDialog(null, "Selecciona un valor", "¡Atención!", JOptionPane.ERROR_MESSAGE);
 		} else {
-			I_Usuario.getFrame().dispose();
+			int numeroAuditoria = (I_Usuario.getLista().getSelectedIndex())+1;
+			ControladorUsuarioAuditoria.setNumeroAuditoria(numeroAuditoria);
 			I_Usuario_Auditoria.getMiIUsuarioAuditoria();
-			ControladorUsuarioAuditoria.setNumeroAuditoria(I_Usuario);;
+			I_Usuario.getFrame().dispose();
 		}
 	}
 }

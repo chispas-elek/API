@@ -29,7 +29,6 @@ public class ListaPreguntas {
 			while (rs.next()) {
 				lPreguntas.add(new Pregunta(rs.getInt("idPregunta"), rs.getString("nombrePregunta"), rs.getInt("idAuditoria")));
 			}
-			conector.conexion.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
