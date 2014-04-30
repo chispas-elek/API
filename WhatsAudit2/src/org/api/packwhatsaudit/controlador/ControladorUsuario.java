@@ -10,6 +10,7 @@ public class ControladorUsuario {
 
 	//ATRIBUTOS
 	private static ControladorUsuario miControladorUsuario;
+	private static String nombreUsuario;
 
 	//MÉTODO CONSTRUCTOR
 	private ControladorUsuario() {
@@ -24,6 +25,14 @@ public class ControladorUsuario {
 		return miControladorUsuario;
 	}
 	
+	public static String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public static void setNombreUsuario(String nombreUsuario) {
+		ControladorUsuario.nombreUsuario = nombreUsuario;
+	}
+
 	//MÉTODOS DEFINIDOS
 	public void introducirAuditorias() {
 		ArrayList<Auditoria> listaRecibe = GestorAuditoria.getGestorAuditoria().obtenerAuditorias();
@@ -33,14 +42,21 @@ public class ControladorUsuario {
 		}
 	}
 	
-	public void comprobarSeleccionLista() {
+	public void realizarAuditoria() {
 		if (I_Usuario.getLista().getSelectedValue() == null) {
 			JOptionPane.showMessageDialog(null, "Selecciona un valor", "¡Atención!", JOptionPane.ERROR_MESSAGE);
 		} else {
 			int numeroAuditoria = (I_Usuario.getLista().getSelectedIndex())+1;
 			ControladorUsuarioAuditoria.setNumeroAuditoria(numeroAuditoria);
+			ControladorUsuarioAuditoria.setNombreUsuario(nombreUsuario);
 			I_Usuario_Auditoria.getMiIUsuarioAuditoria();
 			I_Usuario.getFrame().dispose();
 		}
+	}
+	
+	public void abrirHistoricoUsuario() {
+		I_Usuario_Historico.getMiIUsuarioHistorico();
+		ControladorUsuarioHistorico.setNombreUsuario(nombreUsuario);
+		I_Usuario.getFrame().dispose();
 	}
 }

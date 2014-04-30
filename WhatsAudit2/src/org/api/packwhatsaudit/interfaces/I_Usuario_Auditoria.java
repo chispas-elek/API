@@ -3,15 +3,25 @@ package org.api.packwhatsaudit.interfaces;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoria;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class I_Usuario_Auditoria {
 
 	//ATRIBUTOS
 	private static I_Usuario_Auditoria miIUsuarioAuditoria;
-	private JFrame frame;
+	private static JFrame frame;
+	private JLabel labelInstrucciones;
 	private JScrollPane scrollPane;
+	private static DefaultTableModel modeloTabla;
 	private static JTable tabla;
+	private JButton botonAceptar;
+	private JButton botonCancelar;
 
 	//MÉTODO CONSTRUCTOR	
 	private I_Usuario_Auditoria() {
@@ -26,6 +36,10 @@ public class I_Usuario_Auditoria {
 		return miIUsuarioAuditoria;
 	}
 
+	public static JFrame getFrame() {
+		return frame;
+	}
+
 	public static JTable getTabla() {
 		return tabla;
 	}
@@ -34,23 +48,44 @@ public class I_Usuario_Auditoria {
 		I_Usuario_Auditoria.tabla = tabla;
 	}
 
+	public static DefaultTableModel getModeloTabla() {
+		return modeloTabla;
+	}
+
+	public static void setModeloTabla(DefaultTableModel modeloTabla) {
+		I_Usuario_Auditoria.modeloTabla = modeloTabla;
+	}
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
-		ControladorUsuarioAuditoria.getMiControladorUsuario().obtenerDatos();
+		ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().obtenerDatos();
+		
+		labelInstrucciones = new JLabel("(Marcar con una X la opción deseada)");
+		labelInstrucciones.setHorizontalAlignment(SwingConstants.CENTER);
+		labelInstrucciones.setBounds(10, 42, 564, 14);
 		
 		scrollPane = new JScrollPane(tabla);
-		scrollPane.setBounds(10, 11, 564, 461);
+		scrollPane.setBounds(10, 67, 564, 405);
 		
 		tabla.setFillsViewportHeight(true);
-		tabla.setAutoResizeMode(0);
-		System.out.println(tabla.getRowCount());
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		
+		botonAceptar = new JButton("Guardar");
+		botonAceptar.setBounds(10, 503, 89, 23);
+		botonAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().guardarDatos();
+			}
+		});
 				
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(scrollPane);
+		frame.getContentPane().add(labelInstrucciones);
+		frame.getContentPane().add(botonAceptar);
+		frame.getContentPane().add(botonCancelar);
 		frame.setVisible(true);
 	}
 }

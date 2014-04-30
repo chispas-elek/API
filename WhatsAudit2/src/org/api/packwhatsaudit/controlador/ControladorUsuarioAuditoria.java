@@ -2,7 +2,7 @@ package org.api.packwhatsaudit.controlador;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.ButtonGroup;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
@@ -14,6 +14,7 @@ public class ControladorUsuarioAuditoria {
 	//ATRIBUTOS
 	private static ControladorUsuarioAuditoria miControladorUsuarioAuditoria;
 	private static int numeroAuditoria;
+	private static String nombreUsuario;
 
 	//MÉTODO CONSTRUCTOR
 	private ControladorUsuarioAuditoria() {
@@ -21,7 +22,7 @@ public class ControladorUsuarioAuditoria {
 	}
 
 	//GETTERS Y SETTERS
-	public static ControladorUsuarioAuditoria getMiControladorUsuario() {
+	public static ControladorUsuarioAuditoria getMiControladorUsuarioAuditoria() {
 		if (miControladorUsuarioAuditoria == null) {
 			miControladorUsuarioAuditoria = new ControladorUsuarioAuditoria();
 		}
@@ -36,30 +37,63 @@ public class ControladorUsuarioAuditoria {
 		ControladorUsuarioAuditoria.numeroAuditoria = numeroAuditoria;
 	}
 	
+	public static String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public static void setNombreUsuario(String nombreUsuario) {
+		ControladorUsuarioAuditoria.nombreUsuario = nombreUsuario;
+	}
+	
 	//MÉTODOS DEFINIDOS
 	public void obtenerDatos() {
 		ArrayList<Pregunta> preguntas = GestorAuditoria.getGestorAuditoria().obtenerPreguntasAuditoria(numeroAuditoria);
 		crearTabla(preguntas);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void crearTabla(ArrayList<Pregunta> pPreguntas) {
-		String[] nombresDeColumnas = {"Número de pregunta", "Pregunta", "Sí", "No sé", "No", "Observaciones"};
-		Object[][] datos = new Object[pPreguntas.size()][];
+		Vector<String> cabeceras = insertarCabeceras();
+		Vector<Vector> datos = insertarDatos(pPreguntas);
+		I_Usuario_Auditoria.setTabla(new JTable(datos, cabeceras));
+	}
+	
+	public Vector<String> insertarCabeceras() {
+		Vector<String> retorno = new Vector<String>();
+		retorno.add("Número de pregunta");
+		retorno.add("Pregunta");
+		retorno.add("Sí");
+		retorno.add("No sé");
+		retorno.add("No");
+		retorno.add("Observaciones");
+		return retorno;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Vector<Vector> insertarDatos(ArrayList<Pregunta> pPreguntas) {
+		Vector<Vector> retorno = new Vector<Vector>();
 		Iterator<Pregunta> itr = pPreguntas.iterator();
+		Vector vectorActual = null;
 		Pregunta preguntaActual;
-		int i = 0;
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			preguntaActual = itr.next();
-			ButtonGroup grupoBotones = new ButtonGroup();
-			JButton botonSi = new JButton();
-			JButton botonNoSe = new JButton();
-			JButton botonNo = new JButton();
-			grupoBotones.add(botonSi);
-			grupoBotones.add(botonNoSe);
-			grupoBotones.add(botonNo);
-			datos[i] = (new Object[] {preguntaActual.getId(), preguntaActual.getTexto(), new Boolean(false), new Boolean(false), new Boolean(false), ""});
-			i++;
+			vectorActual = new Vector();
+			vectorActual.add(preguntaActual.getId());
+			vectorActual.add(preguntaActual.getTexto());
+			vectorActual.add("");
+			vectorActual.add("");
+			vectorActual.add("");
+			vectorActual.add("");
+			retorno.add(vectorActual);
 		}
-		I_Usuario_Auditoria.setTabla(new JTable(datos, nombresDeColumnas));
+		return retorno;
+	}
+	
+	public void guardarDatos() {
+		
+	}
+	
+	public void cancelarAuditoria() {
+		
 	}
 }

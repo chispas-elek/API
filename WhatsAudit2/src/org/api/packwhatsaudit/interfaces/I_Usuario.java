@@ -70,7 +70,7 @@ public class I_Usuario {
 		botonRellenar.setBounds(382, 54, 158, 23);
 		botonRellenar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorUsuario.getMiControladorUsuario().comprobarSeleccionLista();
+				ControladorUsuario.getMiControladorUsuario().realizarAuditoria();
 			}
 		});
 

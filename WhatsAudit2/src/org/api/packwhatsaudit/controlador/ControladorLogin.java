@@ -36,6 +36,7 @@ public class ControladorLogin {
 		case 1:
 			I_Usuario.getMiIUsuario();
 			I_Login.getFrame().dispose();
+			ControladorUsuario.setNombreUsuario(I_Login.getTextFieldUsuario().getText());
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "¡Atención!", JOptionPane.ERROR_MESSAGE);
