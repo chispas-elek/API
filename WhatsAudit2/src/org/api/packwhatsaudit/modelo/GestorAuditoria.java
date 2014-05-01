@@ -50,4 +50,13 @@ public class GestorAuditoria {
 	    ArrayList<Pregunta> lPreguntas = this.obtenerPreguntasAuditoria(pIdAuditoria);
 		return lRespuestas.obtenerRespuestasAuditoria(lPreguntas, pFecha);
 	}
+	
+	/**
+	 * Metodo que dado una lista de respuestas introduce los datos en la BD
+	 * @param pListaR
+	 */
+	
+	public void anadirRespuestas(ListaRespuestas pListaR) {
+		pListaR.anadirRespuestaUsuario();
+	}
 }

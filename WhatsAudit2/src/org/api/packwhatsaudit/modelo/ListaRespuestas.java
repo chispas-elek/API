@@ -39,7 +39,7 @@ public class ListaRespuestas {
 		return lRespuestas;
 	}
 
-	public void anadirRespuesta(int pIdAudit, int pIdPregunta) {
+	/*public void anadirRespuesta(int pIdAudit, int pIdPregunta) {
 		Conector conector = Conector.getConector();
 		Iterator<Respuesta> itr = lRespuestas.iterator();
 		while(itr.hasNext()) {
@@ -47,5 +47,19 @@ public class ListaRespuestas {
 			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+pIdPregunta+",'"+unaRespuesta.getFecha().getTime()+"');";
 			conector.execSQL(consulta);
 		}
+	}*/
+	
+	public void anadirRespuestaUsuario() {
+		Conector conector = Conector.getConector();
+		Iterator<Respuesta> itr = this.getIterator();
+		while(itr.hasNext()) {
+			Respuesta unaRespuesta = itr.next();
+			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+unaRespuesta.getFecha().getTime()+"');";
+			conector.execSQL(consulta);
+		}
+	}
+	
+	private Iterator<Respuesta> getIterator() {
+		return lRespuestas.iterator();
 	}
 }
