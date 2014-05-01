@@ -55,7 +55,7 @@ public class ListaRespuestas {
 		Iterator<Respuesta> itr = this.getIterator();
 		while(itr.hasNext()) {
 			Respuesta unaRespuesta = itr.next();
-			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+fechaDeHoy+", "+unaRespuesta.getIdUsuario()+");";
+			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestaTexto','idPregunta','fecha', 'idUsuario', 'idAuditoria') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+fechaDeHoy+", "+unaRespuesta.getIdUsuario()+", "+unaRespuesta.getIdAuditoria()+");";
 			conector.execSQL(consulta);
 		}
 	}
@@ -71,7 +71,7 @@ public class ListaRespuestas {
 			String consulta = "SELECT *  FROM respuesta WHERE idUsuario=" + pUsuario.getId() + "';";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
-				lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario")));
+				lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
 			}
 		
 			conector.conexion.close();

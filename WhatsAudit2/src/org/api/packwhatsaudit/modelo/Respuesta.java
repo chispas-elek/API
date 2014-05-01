@@ -12,9 +12,10 @@ public class Respuesta {
 	private int idPregunta;
 	private String fecha;
 	private int idUsuario;
+	private int idAuditoria;
 	
 	//MÉTODO CONSTRUCTOR
-	public Respuesta(int idRespuesta, String respuestaUno, String respuestaDos, String respuestaTres, String respuestaTexto, int idPregunta, String fecha, int idUsuario) {
+	public Respuesta(int idRespuesta, String respuestaUno, String respuestaDos, String respuestaTres, String respuestaTexto, int idPregunta, String fecha, int idUsuario, int idAuditoria) {
 		this.idRespuesta = idRespuesta;
 		this.respuestaUno = respuestaUno;
 		this.respuestaDos = respuestaDos;
@@ -22,15 +23,25 @@ public class Respuesta {
 		this.respuestaTexto = respuestaTexto;
 		this.idPregunta = idPregunta;
 		this.fecha = fecha;
+		this.idAuditoria = idAuditoria;
 	}
 	
-	public Respuesta(String respuestaUno, String respuestaDos,String respuestaTres, String respuestaTexto, int idPregunta, int idUsuario) {
+	public Respuesta(String respuestaUno, String respuestaDos,String respuestaTres, String respuestaTexto, int idPregunta, int idUsuario, int idAuditoria) {
 		super();
 		this.respuestaUno = respuestaUno;
 		this.respuestaDos = respuestaDos;
 		this.respuestaTres = respuestaTres;
 		this.respuestaTexto = respuestaTexto;
 		this.idPregunta = idPregunta;
+		this.idAuditoria = idAuditoria;
+	}
+
+	public int getIdAuditoria() {
+		return idAuditoria;
+	}
+
+	public void setIdAuditoria(int idAuditoria) {
+		this.idAuditoria = idAuditoria;
 	}
 
 	//GETTERS Y SETTERS

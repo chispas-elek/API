@@ -107,7 +107,8 @@ public class ControladorUsuarioAuditoria {
 															modeloTabla.getValueAt(i, 4).toString(), 
 															modeloTabla.getValueAt(i, 5).toString(), 
 															Integer.parseInt(modeloTabla.getValueAt(i, 0).toString()),
-															usuario.getId()));
+															usuario.getId(),
+															numeroAuditoria));
 		}
 		GestorAuditoria.getGestorAuditoria().anadirRespuestas(lRespuestas);
 	}
