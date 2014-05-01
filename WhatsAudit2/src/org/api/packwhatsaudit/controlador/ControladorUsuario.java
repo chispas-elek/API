@@ -10,7 +10,7 @@ public class ControladorUsuario {
 
 	//ATRIBUTOS
 	private static ControladorUsuario miControladorUsuario;
-	private static String nombreUsuario;
+	private static Usuario usuario;
 
 	//MÉTODO CONSTRUCTOR
 	private ControladorUsuario() {
@@ -25,12 +25,12 @@ public class ControladorUsuario {
 		return miControladorUsuario;
 	}
 	
-	public static String getNombreUsuario() {
-		return nombreUsuario;
+	public static Usuario getUsuario() {
+		return usuario;
 	}
 
-	public static void setNombreUsuario(String nombreUsuario) {
-		ControladorUsuario.nombreUsuario = nombreUsuario;
+	public static void setUsuario(Usuario Usuario) {
+		ControladorUsuario.usuario = Usuario;
 	}
 
 	//MÉTODOS DEFINIDOS
@@ -48,15 +48,9 @@ public class ControladorUsuario {
 		} else {
 			int numeroAuditoria = (I_Usuario.getLista().getSelectedIndex())+1;
 			ControladorUsuarioAuditoria.setNumeroAuditoria(numeroAuditoria);
-			ControladorUsuarioAuditoria.setNombreUsuario(nombreUsuario);
+			ControladorUsuarioAuditoria.setUsuario(usuario);
 			I_Usuario_Auditoria.getMiIUsuarioAuditoria();
 			I_Usuario.getFrame().dispose();
 		}
-	}
-	
-	public void abrirHistoricoUsuario() {
-		I_Usuario_Historico.getMiIUsuarioHistorico();
-		ControladorUsuarioHistorico.setNombreUsuario(nombreUsuario);
-		I_Usuario.getFrame().dispose();
 	}
 }

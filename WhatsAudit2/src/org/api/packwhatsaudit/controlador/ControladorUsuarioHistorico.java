@@ -1,10 +1,12 @@
 package org.api.packwhatsaudit.controlador;
 
+import org.api.packwhatsaudit.modelo.Usuario;
+
 public class ControladorUsuarioHistorico {
 
 	//ATRIBUTOS
 	private static ControladorUsuarioHistorico miControladorUsuarioHistorico;
-	private static String nombreUsuario;
+	private static Usuario usuario;
 
 	//MÉTODO CONSTRUCTOR
 	private ControladorUsuarioHistorico() {
@@ -19,12 +21,12 @@ public class ControladorUsuarioHistorico {
 		return miControladorUsuarioHistorico;
 	}
 
-	public static String getNombreUsuario() {
-		return nombreUsuario;
+	public static Usuario getUsuario() {
+		return usuario;
 	}
 
-	public static void setNombreUsuario(String nombreUsuario) {
-		ControladorUsuarioHistorico.nombreUsuario = nombreUsuario;
+	public static void setUsuario(Usuario nombreUsuario) {
+		ControladorUsuarioHistorico.usuario = nombreUsuario;
 	}
 
 	//MÉTODOS DEFINIDOS

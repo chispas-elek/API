@@ -32,6 +32,4 @@ public class GestorUsuario {
 	public Usuario comprobarUsuario(String pNombre, String pContraseña) {
 		return lista.comprobarUsuario(pNombre, pContraseña);
 	}
-	
-	
 }

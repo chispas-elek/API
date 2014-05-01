@@ -51,10 +51,11 @@ public class ListaRespuestas {
 	
 	public void anadirRespuestaUsuario() {
 		Conector conector = Conector.getConector();
+		String fechaDeHoy = fechaDeHoy();
 		Iterator<Respuesta> itr = this.getIterator();
 		while(itr.hasNext()) {
 			Respuesta unaRespuesta = itr.next();
-			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+unaRespuesta.getFecha()+"');";
+			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+fechaDeHoy+", "+unaRespuesta.getIdUsuario()+");";
 			conector.execSQL(consulta);
 		}
 	}
@@ -70,7 +71,7 @@ public class ListaRespuestas {
 			String consulta = "SELECT *  FROM respuesta WHERE idUsuario=" + pUsuario.getId() + "';";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
-				lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getBoolean("respuestaUno"), rs.getBoolean("respuestaDos"), rs.getBoolean("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha")));
+				lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario")));
 			}
 		
 			conector.conexion.close();
@@ -81,5 +82,9 @@ public class ListaRespuestas {
 	
 	private Iterator<Respuesta> getIterator() {
 		return lRespuestas.iterator();
+	}
+	
+	private String fechaDeHoy() {
+		return null;
 	}
 }
