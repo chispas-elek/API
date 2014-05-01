@@ -45,11 +45,11 @@ public class GestorAuditoria {
 		return lPreguntas.obtenerPreguntasAuditoria(pIdAuditoria);
 	}
 	
-	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, GregorianCalendar pFecha) {
+	/*public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, GregorianCalendar pFecha) {
 		ListaRespuestas lRespuestas = new ListaRespuestas();
 	    ArrayList<Pregunta> lPreguntas = this.obtenerPreguntasAuditoria(pIdAuditoria);
 		return lRespuestas.obtenerRespuestasAuditoria(lPreguntas, pFecha);
-	}
+	}*/
 	
 	/**
 	 * Metodo que dado una lista de respuestas introduce los datos en la BD
@@ -58,5 +58,13 @@ public class GestorAuditoria {
 	
 	public void anadirRespuestas(ListaRespuestas pListaR) {
 		pListaR.anadirRespuestaUsuario();
+	}
+	
+	/**
+	 * Éste metodo devolverá una lista de respuestas filtrada con las auditorias diferentes que ha contestado el usuario
+	 */
+	public ListaRespuestas obtenerAuditoriasUsuario(Usuario pUsuario) {
+		//obtenemos todas las respuestas que ha realizado el usuario
+		return null;
 	}
 }

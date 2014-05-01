@@ -21,7 +21,7 @@ public class ListaRespuestas {
 	}
 
 	//MÉTODOS DEFINIDOS
-	public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
+	/**public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
 		try {
 			Conector conector = Conector.getConector();
 			Iterator<Pregunta> itr = pListaP.iterator();
@@ -37,7 +37,7 @@ public class ListaRespuestas {
 			e.printStackTrace();
 		}
 		return lRespuestas;
-	}
+	}*/
 
 	/*public void anadirRespuesta(int pIdAudit, int pIdPregunta) {
 		Conector conector = Conector.getConector();
@@ -54,8 +54,28 @@ public class ListaRespuestas {
 		Iterator<Respuesta> itr = this.getIterator();
 		while(itr.hasNext()) {
 			Respuesta unaRespuesta = itr.next();
-			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+unaRespuesta.getFecha().getTime()+"');";
+			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestraTexto','idPregunta','fecha') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+unaRespuesta.getFecha()+"');";
 			conector.execSQL(consulta);
+		}
+	}
+	
+	/**
+	 * Devuelve las respuestas realizadas por un usuario
+	 * @param pUsuario
+	 */
+	
+	public void obtenerRespuestasUsuario(Usuario pUsuario) {
+		try {
+			Conector conector = Conector.getConector();
+			String consulta = "SELECT *  FROM respuesta WHERE idUsuario=" + pUsuario.getId() + "';";
+			ResultSet rs = conector.execSQL(consulta);
+			while (rs.next()) {
+				lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getBoolean("respuestaUno"), rs.getBoolean("respuestaDos"), rs.getBoolean("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha")));
+			}
+		
+			conector.conexion.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	

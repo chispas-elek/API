@@ -11,17 +11,17 @@ public class Respuesta {
 	private boolean respuestaTres;
 	private String respuestaTexto;
 	private int idPregunta;
-	private GregorianCalendar fecha;
+	private String fecha;
 	
 	//MÉTODO CONSTRUCTOR
-	public Respuesta(int idRespuesta, boolean respuestaUno, boolean respuestaDos, boolean respuestaTres, String respuestaTexto, int idPregunta) {
+	public Respuesta(int idRespuesta, boolean respuestaUno, boolean respuestaDos, boolean respuestaTres, String respuestaTexto, int idPregunta, String fecha) {
 		this.idRespuesta = idRespuesta;
 		this.respuestaUno = respuestaUno;
 		this.respuestaDos = respuestaDos;
 		this.respuestaTres = respuestaTres;
 		this.respuestaTexto = respuestaTexto;
 		this.idPregunta = idPregunta;
-		this.fecha = new GregorianCalendar();
+		this.fecha = fecha;
 	}
 	
 	//GETTERS Y SETTERS
@@ -61,10 +61,10 @@ public class Respuesta {
 	public void setIdPregunta(int idPregunta) {
 		this.idPregunta = idPregunta;
 	}
-	public GregorianCalendar getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(GregorianCalendar fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	
