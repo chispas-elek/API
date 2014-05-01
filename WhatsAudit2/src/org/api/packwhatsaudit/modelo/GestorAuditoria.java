@@ -62,9 +62,16 @@ public class GestorAuditoria {
 	
 	/**
 	 * Éste metodo devolverá una lista de respuestas filtrada con las auditorias diferentes que ha contestado el usuario
+	 * @param pUsuario Los datos del usuario actual.
 	 */
-	public ListaRespuestas obtenerAuditoriasUsuario(Usuario pUsuario) {
-		//obtenemos todas las respuestas que ha realizado el usuario
-		return null;
+	public ArrayList<Respuesta> obtenerAuditoriasUsuarioNoRepetidas(Usuario pUsuario) {
+		//Obtenemos las respuestas del usuario sin repetir las auditorias, para saber a cuántas auditorias totales ha contestado.
+		ListaRespuestas lasResp = new ListaRespuestas();
+		return lasResp.obtenerAuditoriasUsuarioNoRepetidas(pUsuario);
+	}
+	
+	public String obtenerNombreAuditoria(Auditoria pAudit) {
+		ListaAuditorias lAudit = new ListaAuditorias();
+		return lAudit.obtenerNombreAuditoria(pAudit);
 	}
 }

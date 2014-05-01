@@ -87,4 +87,22 @@ public class ListaRespuestas {
 	private String fechaDeHoy() {
 		return null;
 	}
+	
+	public ArrayList<Respuesta> obtenerAuditoriasUsuarioNoRepetidas(Usuario pUsuario) {
+		ArrayList<Respuesta> lasResp = new ArrayList<Respuesta>();
+		try {
+			Conector conector = Conector.getConector();
+			String consulta = " SELECT DISTINCT idAuditoria FROM Respuestas WHERE idUsuario=" + pUsuario.getId() + "';";
+			ResultSet rs = conector.execSQL(consulta);
+			while (rs.next()) {
+				lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
+			}
+		
+			conector.conexion.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return lasResp;
+	}
+	
 }

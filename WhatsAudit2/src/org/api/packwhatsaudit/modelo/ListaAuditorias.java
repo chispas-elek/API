@@ -43,6 +43,7 @@ public class ListaAuditorias {
 			String consulta = "SELECT * FROM auditoria"; 
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
+				//Revisar ésta parte y mirar si se puede hacer que la BD autoincremente los ids
 				numeroFilas++;
 			}
 		} catch (SQLException e) {
@@ -52,5 +53,20 @@ public class ListaAuditorias {
 		String inserccion = "INSERT INTO auditoria (idAuditoria, nombreAuditoria) VALUES (" + numeroFilas + ", '"+pAudit.getNombre()+"');";
 		conector.execSQL(inserccion);
 		return numeroFilas;
+	}
+	
+	public String obtenerNombreAuditoria(Auditoria pAudi) {
+		String nombreAudit = new String();
+		try {
+			Conector conector = Conector.getConector();
+			String consulta = "Select * FROM auditoria where idAuditoria="+pAudi.getId()+";";
+			ResultSet rs = conector.execSQL(consulta);
+			while (rs.next()) {
+				nombreAudit = rs.getString("nombreAuditoria");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nombreAudit;
 	}
 }
