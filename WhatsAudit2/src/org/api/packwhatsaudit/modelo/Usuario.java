@@ -30,6 +30,22 @@ public class Usuario {
 		return contraseña;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
 	public int getTipo() {
 		return tipo;
 	}

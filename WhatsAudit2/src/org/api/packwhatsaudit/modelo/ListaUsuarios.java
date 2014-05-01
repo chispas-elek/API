@@ -55,18 +55,18 @@ public class ListaUsuarios {
 	}
 
 	//devuelve 0 admin 1 usuario -1 error
-	public int comprobarUsuario(String pNombre, String pContraseña) {
+	public Usuario comprobarUsuario(String pNombre, String pContraseña) {
 		Conector conector = Conector.getConector();
-		int tipo = -1;
+		Usuario usu = null;
 		try {
-			String consulta = "SELECT tipo FROM usuario WHERE nombre='" + pNombre + "' AND contraseña='" + pContraseña + "';";
+			String consulta = "SELECT * FROM usuario WHERE nombre='" + pNombre + "' AND contraseña='" + pContraseña + "';";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
-				tipo = rs.getInt("tipo");
+				usu = new Usuario(rs.getInt("idUsuario"), rs.getString("nombre"), rs.getString("contraseña"), rs.getInt("tipo"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return tipo;
+		return usu;
 	}
 }

@@ -6,6 +6,7 @@ import org.api.packwhatsaudit.interfaces.I_Administrador;
 import org.api.packwhatsaudit.interfaces.I_Login;
 import org.api.packwhatsaudit.interfaces.I_Usuario;
 import org.api.packwhatsaudit.modelo.GestorUsuario;
+import org.api.packwhatsaudit.modelo.Usuario;
 
 public class ControladorLogin {
 
@@ -27,8 +28,8 @@ public class ControladorLogin {
 
 	//MÉTODOS DEFINIDOS
 	public void comprobarDatosLogin() {
-		int tipoUsuario = GestorUsuario.getGestorUsuario().comprobarUsuario(I_Login.getTextFieldUsuario().getText(), I_Login.getPasswordFieldContraseña().getText());
-		switch (tipoUsuario) {
+		Usuario usu = GestorUsuario.getGestorUsuario().comprobarUsuario(I_Login.getTextFieldUsuario().getText(), I_Login.getPasswordFieldContraseña().getText());
+		switch (usu.getTipo()) {
 		case 0:
 			I_Administrador.getMiIAdministrador();
 			I_Login.getFrame().dispose();

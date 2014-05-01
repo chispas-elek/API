@@ -29,7 +29,9 @@ public class GestorUsuario {
 		lista.anadirUsuario(pUs);
 	}
 	
-	public int comprobarUsuario(String pNombre, String pContraseña) {
+	public Usuario comprobarUsuario(String pNombre, String pContraseña) {
 		return lista.comprobarUsuario(pNombre, pContraseña);
 	}
+	
+	
 }
