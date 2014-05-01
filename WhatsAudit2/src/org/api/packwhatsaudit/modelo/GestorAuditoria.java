@@ -45,11 +45,17 @@ public class GestorAuditoria {
 		return lPreguntas.obtenerPreguntasAuditoria(pIdAuditoria);
 	}
 	
-	/*public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, GregorianCalendar pFecha) {
+	/**
+	 * Metodo que dado una auditoria y una fecha determinada me devuelve todas las respuestas asociadas
+	 * @param pIdAuditoria El identificador de la auditoria
+	 * @param pFecha La fecha en la que se realizó la auditoria
+	 * @return La lista de las respuestas
+	 */
+	
+	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha) {
 		ListaRespuestas lRespuestas = new ListaRespuestas();
-	    ArrayList<Pregunta> lPreguntas = this.obtenerPreguntasAuditoria(pIdAuditoria);
-		return lRespuestas.obtenerRespuestasAuditoria(lPreguntas, pFecha);
-	}*/
+	    return lRespuestas.obtenerLasRespuestas(pIdAuditoria, pFecha);
+	}
 	
 	/**
 	 * Metodo que dado una lista de respuestas introduce los datos en la BD

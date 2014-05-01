@@ -21,7 +21,7 @@ public class ListaRespuestas {
 	}
 
 	//MÉTODOS DEFINIDOS
-	/**public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
+	/*public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
 		try {
 			Conector conector = Conector.getConector();
 			Iterator<Pregunta> itr = pListaP.iterator();
@@ -48,6 +48,28 @@ public class ListaRespuestas {
 			conector.execSQL(consulta);
 		}
 	}*/
+	
+	/**
+	 * Devuelve las respuestas de una auditoria dado su identificador y la fecha
+	 * @param pIdAuditoria El identificador de la auditoria
+	 * @param pFecha La fecha de realización
+	 * @return Las respuestas asociadas de esa auditoria en esa fecha
+	 */
+	
+	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha) {
+		ArrayList<Respuesta> lasResp = new ArrayList<Respuesta>();
+		try {
+			Conector conector = Conector.getConector();
+			String consulta = "SELECT * FROM respuesta WHERE idAuditoria=" + pIdAuditoria + "' AND fecha='"+pFecha+"';";
+			ResultSet rs = conector.execSQL(consulta);
+			while (rs.next()) {
+				lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return lasResp;
+	}
 	
 	public void anadirRespuestaUsuario() {
 		Conector conector = Conector.getConector();
