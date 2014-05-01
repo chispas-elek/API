@@ -100,17 +100,19 @@ public class ControladorUsuarioAuditoria {
 	
 	public void guardarDatos() {
 		ListaRespuestas lRespuestas = new ListaRespuestas();
-		DefaultTableModel modeloTabla = I_Usuario_Auditoria.getModeloTabla();
-		for (int i = 0; i <= I_Usuario_Auditoria.getTabla().getRowCount(); i++) {
-			lRespuestas.getlRespuestas().add(new Respuesta(modeloTabla.getValueAt(i, 2).toString(), 
-															modeloTabla.getValueAt(i, 3).toString(), 
-															modeloTabla.getValueAt(i, 4).toString(), 
-															modeloTabla.getValueAt(i, 5).toString(), 
-															Integer.parseInt(modeloTabla.getValueAt(i, 0).toString()),
+		JTable tabla = I_Usuario_Auditoria.getTabla();
+		for (int i = 0; i < I_Usuario_Auditoria.getTabla().getRowCount(); i++) {
+			lRespuestas.getlRespuestas().add(new Respuesta(tabla.getValueAt(i, 2).toString(), 
+															tabla.getValueAt(i, 3).toString(), 
+															tabla.getValueAt(i, 4).toString(), 
+															tabla.getValueAt(i, 5).toString(), 
+															Integer.parseInt(tabla.getValueAt(i, 0).toString()),
 															usuario.getId(),
 															numeroAuditoria));
 		}
 		GestorAuditoria.getGestorAuditoria().anadirRespuestas(lRespuestas);
+		I_Usuario_Auditoria.getFrame().dispose();
+		I_Usuario.getFrame().setVisible(true);
 	}
 	
 	public void cancelarAuditoria() {

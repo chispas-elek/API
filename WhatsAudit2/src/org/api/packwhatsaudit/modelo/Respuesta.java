@@ -23,6 +23,7 @@ public class Respuesta {
 		this.respuestaTexto = respuestaTexto;
 		this.idPregunta = idPregunta;
 		this.fecha = fecha;
+		this.idUsuario = idUsuario;
 		this.idAuditoria = idAuditoria;
 	}
 	
@@ -33,6 +34,7 @@ public class Respuesta {
 		this.respuestaTres = respuestaTres;
 		this.respuestaTexto = respuestaTexto;
 		this.idPregunta = idPregunta;
+		this.idUsuario = idUsuario;
 		this.idAuditoria = idAuditoria;
 	}
 
@@ -95,6 +97,4 @@ public class Respuesta {
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
-	
 }

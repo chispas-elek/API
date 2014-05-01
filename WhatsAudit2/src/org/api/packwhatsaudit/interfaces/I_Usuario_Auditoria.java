@@ -71,12 +71,20 @@ public class I_Usuario_Auditoria {
 		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		
 		botonAceptar = new JButton("Guardar");
-		botonAceptar.setBounds(10, 503, 89, 23);
+		botonAceptar.setBounds(10, 508, 89, 23);
 		botonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().guardarDatos();
 			}
 		});
+		
+		botonCancelar = new JButton("Cancelar");
+		botonCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().cancelarAuditoria();
+			}
+		});
+		botonCancelar.setBounds(485, 508, 89, 23);
 				
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
@@ -85,6 +93,7 @@ public class I_Usuario_Auditoria {
 		frame.getContentPane().add(scrollPane);
 		frame.getContentPane().add(labelInstrucciones);
 		frame.getContentPane().add(botonAceptar);
+		frame.getContentPane().add(botonCancelar);
 		frame.getContentPane().add(botonCancelar);
 		frame.setVisible(true);
 	}

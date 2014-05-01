@@ -77,7 +77,7 @@ public class ListaRespuestas {
 		Iterator<Respuesta> itr = this.getIterator();
 		while(itr.hasNext()) {
 			Respuesta unaRespuesta = itr.next();
-			String consulta = "INSERT INTO respuesta ('respuestaUno','respuestaDos','respuestaTres','respuestaTexto','idPregunta','fecha', 'idUsuario', 'idAuditoria') VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+fechaDeHoy+", "+unaRespuesta.getIdUsuario()+", "+unaRespuesta.getIdAuditoria()+");";
+			String consulta = "INSERT INTO respuesta (respuestaUno, respuestaDos, respuestaTres, respuestaTexto, idPregunta, fecha, idUsuario, idAuditoria) VALUES ('"+unaRespuesta.isRespuestaUno()+"','"+unaRespuesta.isRespuestaDos()+"','"+unaRespuesta.isRespuestaTres()+"','"+unaRespuesta.getRespuestaTexto()+"',"+unaRespuesta.getIdPregunta()+",'"+fechaDeHoy+"', "+unaRespuesta.getIdUsuario()+", "+unaRespuesta.getIdAuditoria()+");";
 			conector.execSQL(consulta);
 		}
 	}
@@ -107,7 +107,7 @@ public class ListaRespuestas {
 	}
 	
 	private String fechaDeHoy() {
-		return null;
+		return "Hoy";
 	}
 	
 	public ArrayList<Respuesta> obtenerAuditoriasUsuarioNoRepetidas(Usuario pUsuario) {
