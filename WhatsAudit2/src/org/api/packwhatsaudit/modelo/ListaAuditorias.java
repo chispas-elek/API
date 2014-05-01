@@ -38,7 +38,7 @@ public class ListaAuditorias {
 	//OK
 	public int anadirAuditoria(Auditoria pAudit) {
 		Conector conector = Conector.getConector();
-		int numeroFilas = -1;
+		int numeroFilas = 0;
 		try {
 			String consulta = "SELECT * FROM auditoria"; 
 			ResultSet rs = conector.execSQL(consulta);

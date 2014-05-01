@@ -13,6 +13,11 @@ public class Pregunta {
 		this.texto = texto;
 		this.idAuditoria = idAuditoria;
 	}
+	
+	public Pregunta(String texto) {
+		super();
+		this.texto = texto;
+	}
 
 	//GETTERS Y SETTERS
 	public int getId() {
