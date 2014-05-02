@@ -3,14 +3,11 @@ package org.api.packwhatsaudit.controlador;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-
 import javax.swing.JTable;
-
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria_Hecha;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Historico;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
-import org.api.packwhatsaudit.modelo.Pregunta;
 import org.api.packwhatsaudit.modelo.Respuesta;
 import org.api.packwhatsaudit.modelo.Usuario;
 
@@ -62,12 +59,13 @@ public class ControladorUsuarioAuditoriaHecha {
 	//MÉTODOS DEFINIDOS
 	public void obtenerDatos() {
 		ArrayList<Respuesta> respuestas = GestorAuditoria.getGestorAuditoria().obtenerLasRespuestas(numeroAuditoria, fecha, usuario.getId());
+		crearTabla(respuestas);
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void crearTabla(ArrayList<Pregunta> pPreguntas) {
+	public void crearTabla(ArrayList<Respuesta> pRespuestas) {
 		Vector<String> cabeceras = insertarCabeceras();
-		Vector<Vector> datos = insertarDatos(pPreguntas);
+		Vector<Vector> datos = insertarDatos(pRespuestas);
 		I_Usuario_Auditoria.setTabla(new JTable(datos, cabeceras));
 	}
 	
@@ -83,20 +81,20 @@ public class ControladorUsuarioAuditoriaHecha {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Vector<Vector> insertarDatos(ArrayList<Pregunta> pPreguntas) {
+	public Vector<Vector> insertarDatos(ArrayList<Respuesta> pPreguntas) {
 		Vector<Vector> retorno = new Vector<Vector>();
-		Iterator<Pregunta> itr = pPreguntas.iterator();
+		Iterator<Respuesta> itr = pPreguntas.iterator();
 		Vector vectorActual = null;
-		Pregunta preguntaActual;
+		Respuesta respuestaActual;
 		while (itr.hasNext()) {
-			preguntaActual = itr.next();
+			respuestaActual = itr.next();
 			vectorActual = new Vector();
-			vectorActual.add(preguntaActual.getId());
-			vectorActual.add(preguntaActual.getTexto());
+			vectorActual.add(respuestaActual.getIdPregunta());
 			vectorActual.add("");
-			vectorActual.add("");
-			vectorActual.add("");
-			vectorActual.add("");
+			vectorActual.add(respuestaActual.isRespuestaUno());
+			vectorActual.add(respuestaActual.isRespuestaDos());
+			vectorActual.add(respuestaActual.isRespuestaTres());
+			vectorActual.add(respuestaActual.getRespuestaTexto());
 			retorno.add(vectorActual);
 		}
 		return retorno;
