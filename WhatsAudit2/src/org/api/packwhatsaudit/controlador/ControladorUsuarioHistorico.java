@@ -3,8 +3,11 @@ package org.api.packwhatsaudit.controlador;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
+
 import javax.swing.JTable;
+
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
+import org.api.packwhatsaudit.interfaces.I_Usuario_Historico;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
 import org.api.packwhatsaudit.modelo.Respuesta;
 import org.api.packwhatsaudit.modelo.Usuario;
@@ -39,6 +42,7 @@ public class ControladorUsuarioHistorico {
 	//MÉTODOS DEFINIDOS
 	public void obtenerDatos() {
 		ArrayList<Respuesta> respuestas = GestorAuditoria.getGestorAuditoria().obtenerAuditoriasUsuarioNoRepetidas(usuario);
+		System.out.println(respuestas.size());
 		crearTabla(respuestas);
 	}
 	
@@ -46,7 +50,7 @@ public class ControladorUsuarioHistorico {
 	public void crearTabla(ArrayList<Respuesta> pRespuestas) {
 		Vector<String> cabeceras = insertarCabeceras();
 		Vector<Vector> datos = insertarDatos(pRespuestas);
-		I_Usuario_Auditoria.setTabla(new JTable(datos, cabeceras));
+		I_Usuario_Historico.setTabla(new JTable(datos, cabeceras));
 	}
 	
 	public Vector<String> insertarCabeceras() {
@@ -67,6 +71,7 @@ public class ControladorUsuarioHistorico {
 			vectorActual = new Vector();
 			vectorActual.add(GestorAuditoria.getGestorAuditoria().obtenerNombreAuditoria(respuestaActual.getIdAuditoria()));
 			vectorActual.add(respuestaActual.getFecha());
+			retorno.add(vectorActual);
 		}
 		return retorno;
 	}
