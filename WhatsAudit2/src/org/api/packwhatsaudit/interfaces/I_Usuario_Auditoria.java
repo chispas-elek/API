@@ -3,7 +3,6 @@ package org.api.packwhatsaudit.interfaces;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
 import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoria;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -18,7 +17,6 @@ public class I_Usuario_Auditoria {
 	private static JFrame frame;
 	private JLabel labelInstrucciones;
 	private JScrollPane scrollPane;
-	private static DefaultTableModel modeloTabla;
 	private static JTable tabla;
 	private JButton botonAceptar;
 	private JButton botonCancelar;
@@ -48,14 +46,6 @@ public class I_Usuario_Auditoria {
 		I_Usuario_Auditoria.tabla = tabla;
 	}
 
-	public static DefaultTableModel getModeloTabla() {
-		return modeloTabla;
-	}
-
-	public static void setModeloTabla(DefaultTableModel modeloTabla) {
-		I_Usuario_Auditoria.modeloTabla = modeloTabla;
-	}
-
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
 		ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().obtenerDatos();
@@ -79,12 +69,12 @@ public class I_Usuario_Auditoria {
 		});
 		
 		botonCancelar = new JButton("Cancelar");
+		botonCancelar.setBounds(485, 508, 89, 23);
 		botonCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().cancelarAuditoria();
 			}
 		});
-		botonCancelar.setBounds(485, 508, 89, 23);
 				
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);

@@ -55,11 +55,11 @@ public class ListaAuditorias {
 		return numeroFilas;
 	}
 	
-	public String obtenerNombreAuditoria(Auditoria pAudi) {
+	public String obtenerNombreAuditoria(int pId) {
 		String nombreAudit = new String();
 		try {
 			Conector conector = Conector.getConector();
-			String consulta = "Select * FROM auditoria where idAuditoria="+pAudi.getId()+";";
+			String consulta = "Select * FROM auditoria where idAuditoria="+pId+";";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
 				nombreAudit = rs.getString("nombreAuditoria");

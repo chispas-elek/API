@@ -53,4 +53,10 @@ public class ControladorUsuario {
 			I_Usuario.getFrame().dispose();
 		}
 	}
+	
+	public void abrirHistorico() {
+		ControladorUsuarioHistorico.setUsuario(usuario);
+		I_Usuario_Historico.getMiIUsuarioHistorico();
+		I_Usuario.getFrame().dispose();
+	}
 }

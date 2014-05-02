@@ -1,18 +1,12 @@
 package org.api.packwhatsaudit.controlador;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Vector;
-
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import org.api.packwhatsaudit.interfaces.I_Usuario;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
-import org.api.packwhatsaudit.modelo.GestorUsuario;
 import org.api.packwhatsaudit.modelo.ListaRespuestas;
 import org.api.packwhatsaudit.modelo.Pregunta;
 import org.api.packwhatsaudit.modelo.Respuesta;

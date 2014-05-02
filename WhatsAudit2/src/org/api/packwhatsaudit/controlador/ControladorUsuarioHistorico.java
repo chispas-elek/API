@@ -1,5 +1,12 @@
 package org.api.packwhatsaudit.controlador;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
+import javax.swing.JTable;
+import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
+import org.api.packwhatsaudit.modelo.GestorAuditoria;
+import org.api.packwhatsaudit.modelo.Respuesta;
 import org.api.packwhatsaudit.modelo.Usuario;
 
 public class ControladorUsuarioHistorico {
@@ -30,4 +37,37 @@ public class ControladorUsuarioHistorico {
 	}
 
 	//MÉTODOS DEFINIDOS
+	public void obtenerDatos() {
+		ArrayList<Respuesta> respuestas = GestorAuditoria.getGestorAuditoria().obtenerAuditoriasUsuarioNoRepetidas(usuario);
+		crearTabla(respuestas);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void crearTabla(ArrayList<Respuesta> pRespuestas) {
+		Vector<String> cabeceras = insertarCabeceras();
+		Vector<Vector> datos = insertarDatos(pRespuestas);
+		I_Usuario_Auditoria.setTabla(new JTable(datos, cabeceras));
+	}
+	
+	public Vector<String> insertarCabeceras() {
+		Vector<String> retorno = new Vector<String>();
+		retorno.add("Número de la auditoria");
+		retorno.add("Fecha");
+		return retorno;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Vector<Vector> insertarDatos(ArrayList<Respuesta> pRespuestas) {
+		Vector<Vector> retorno = new Vector<Vector>();
+		Iterator<Respuesta> itr = pRespuestas.iterator();
+		Vector vectorActual = null;
+		Respuesta respuestaActual;
+		while (itr.hasNext()) {
+			respuestaActual = itr.next();
+			vectorActual = new Vector();
+			vectorActual.add(GestorAuditoria.getGestorAuditoria().obtenerNombreAuditoria(respuestaActual.getIdAuditoria()));
+			vectorActual.add(respuestaActual.getFecha());
+		}
+		return retorno;
+	}
 }

@@ -1,7 +1,6 @@
 package org.api.packwhatsaudit.modelo;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class GestorAuditoria {
 
@@ -76,8 +75,8 @@ public class GestorAuditoria {
 		return lasResp.obtenerAuditoriasUsuarioNoRepetidas(pUsuario);
 	}
 	
-	public String obtenerNombreAuditoria(Auditoria pAudit) {
+	public String obtenerNombreAuditoria(int pId) {
 		ListaAuditorias lAudit = new ListaAuditorias();
-		return lAudit.obtenerNombreAuditoria(pAudit);
+		return lAudit.obtenerNombreAuditoria(pId);
 	}
 }

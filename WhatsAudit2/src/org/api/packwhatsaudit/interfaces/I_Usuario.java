@@ -78,7 +78,7 @@ public class I_Usuario {
 		botonHistorico.setBounds(382, 231, 180, 23);
 		botonHistorico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				I_Usuario_Historico.getMiIUsuarioHistorico();
+				ControladorUsuario.getMiControladorUsuario().abrirHistorico();
 			}
 		});
 		
@@ -91,9 +91,5 @@ public class I_Usuario {
 		frame.getContentPane().add(botonHistorico);
 		frame.getContentPane().add(labelAuditorias);
 		frame.setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		I_Usuario.getMiIUsuario();
 	}
 }
