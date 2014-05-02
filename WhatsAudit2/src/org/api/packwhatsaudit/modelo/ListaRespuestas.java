@@ -45,11 +45,11 @@ public class ListaRespuestas {
 	 * @return Las respuestas asociadas de esa auditoria en esa fecha
 	 */
 	
-	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha) {
+	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha, int pUsuario) {
 		ArrayList<Respuesta> lasResp = new ArrayList<Respuesta>();
 		try {
 			Conector conector = Conector.getConector();
-			String consulta = "SELECT * FROM respuesta WHERE idAuditoria=" + pIdAuditoria + "' AND fecha='"+pFecha+"';";
+			String consulta = "SELECT * FROM respuesta WHERE idAuditoria=" + pIdAuditoria + "' AND fecha='"+pFecha+"' AND idUsuario=" + pUsuario +";";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
 				lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
@@ -103,15 +103,12 @@ public class ListaRespuestas {
 		ArrayList<Respuesta> lasResp = new ArrayList<Respuesta>();
 		try {
 			Conector conector = Conector.getConector();
-			System.out.println(pUsuario.getId());
 			String consulta = "SELECT DISTINCT idAuditoria, fecha FROM respuesta WHERE idUsuario=" + pUsuario.getId() + ";";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
 				//lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
 				lasResp.add(new Respuesta(0, null, null, null, null, 0, rs.getString("fecha"), pUsuario.getId(), rs.getInt("idAuditoria")));
 			}
-		
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

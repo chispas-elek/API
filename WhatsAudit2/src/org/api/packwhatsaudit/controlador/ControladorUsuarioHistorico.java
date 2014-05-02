@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import javax.swing.JTable;
 
-import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
+import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria_Hecha;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Historico;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
 import org.api.packwhatsaudit.modelo.Respuesta;
@@ -24,7 +24,7 @@ public class ControladorUsuarioHistorico {
 	}
 
 	//GETTERS Y SETTERS
-	public static ControladorUsuarioHistorico getMiControladorUsuario() {
+	public static ControladorUsuarioHistorico getMiControladorUsuarioHistorico() {
 		if (miControladorUsuarioHistorico == null) {
 			miControladorUsuarioHistorico = new ControladorUsuarioHistorico();
 		}
@@ -42,7 +42,6 @@ public class ControladorUsuarioHistorico {
 	//MÉTODOS DEFINIDOS
 	public void obtenerDatos() {
 		ArrayList<Respuesta> respuestas = GestorAuditoria.getGestorAuditoria().obtenerAuditoriasUsuarioNoRepetidas(usuario);
-		System.out.println(respuestas.size());
 		crearTabla(respuestas);
 	}
 	
@@ -56,6 +55,7 @@ public class ControladorUsuarioHistorico {
 	public Vector<String> insertarCabeceras() {
 		Vector<String> retorno = new Vector<String>();
 		retorno.add("Número de la auditoria");
+		retorno.add("Nombre de la auditoria");
 		retorno.add("Fecha");
 		return retorno;
 	}
@@ -69,10 +69,19 @@ public class ControladorUsuarioHistorico {
 		while (itr.hasNext()) {
 			respuestaActual = itr.next();
 			vectorActual = new Vector();
+			vectorActual.add(respuestaActual.getIdAuditoria());
 			vectorActual.add(GestorAuditoria.getGestorAuditoria().obtenerNombreAuditoria(respuestaActual.getIdAuditoria()));
 			vectorActual.add(respuestaActual.getFecha());
 			retorno.add(vectorActual);
 		}
 		return retorno;
+	}
+	
+	public void abrirAuditoria() {
+		ControladorUsuarioAuditoriaHecha.setFecha(I_Usuario_Historico.getTabla().getValueAt(I_Usuario_Historico.getTabla().getSelectedRow(), 2).toString());
+		ControladorUsuarioAuditoriaHecha.setNumeroAuditoria(Integer.parseInt(I_Usuario_Historico.getTabla().getValueAt(I_Usuario_Historico.getTabla().getSelectedRow(), 0).toString()));
+		ControladorUsuarioAuditoriaHecha.setUsuario(usuario);
+		I_Usuario_Auditoria_Hecha.getMiIUsuarioAuditoriaHecha();
+		I_Usuario_Historico.getFrame().dispose();
 	}
 }

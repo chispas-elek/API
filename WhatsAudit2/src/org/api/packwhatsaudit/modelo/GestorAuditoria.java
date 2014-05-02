@@ -51,9 +51,9 @@ public class GestorAuditoria {
 	 * @return La lista de las respuestas
 	 */
 	
-	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha) {
+	public ArrayList<Respuesta> obtenerLasRespuestas(int pIdAuditoria, String pFecha, int pUsuario) {
 		ListaRespuestas lRespuestas = new ListaRespuestas();
-	    return lRespuestas.obtenerLasRespuestas(pIdAuditoria, pFecha);
+	    return lRespuestas.obtenerLasRespuestas(pIdAuditoria, pFecha, pUsuario);
 	}
 	
 	/**

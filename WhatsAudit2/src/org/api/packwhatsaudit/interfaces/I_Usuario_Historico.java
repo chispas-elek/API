@@ -47,27 +47,28 @@ public class I_Usuario_Historico {
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
-		ControladorUsuarioHistorico.getMiControladorUsuario().obtenerDatos();
+		ControladorUsuarioHistorico.getMiControladorUsuarioHistorico().obtenerDatos();
 		
 		labelAuditorias = new JLabel("Auditorias contestadas:");
 		labelAuditorias.setHorizontalAlignment(SwingConstants.CENTER);
 		labelAuditorias.setBounds(10, 21, 227, 14);
 		
 		scrollPane = new JScrollPane(tabla);
-		scrollPane.setBounds(10, 67, 564, 405);
+		scrollPane.setBounds(0, 46, 416, 445);
 		
 		tabla.setFillsViewportHeight(true);
 		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		
 		botonConsultar = new JButton("Ver respuestas");
-		botonConsultar.setBounds(258, 143, 116, 23);
+		botonConsultar.setBounds(441, 163, 133, 23);
 		botonConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ControladorUsuarioHistorico.getMiControladorUsuarioHistorico().abrirAuditoria();
 			}
 		});
 				
 		frame = new JFrame();
-		frame.setBounds(100, 100, 400, 400);
+		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(labelAuditorias);
