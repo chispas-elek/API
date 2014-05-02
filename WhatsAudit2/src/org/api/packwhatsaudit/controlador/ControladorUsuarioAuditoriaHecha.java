@@ -66,7 +66,7 @@ public class ControladorUsuarioAuditoriaHecha {
 	public void crearTabla(ArrayList<Respuesta> pRespuestas) {
 		Vector<String> cabeceras = insertarCabeceras();
 		Vector<Vector> datos = insertarDatos(pRespuestas);
-		I_Usuario_Auditoria.setTabla(new JTable(datos, cabeceras));
+		I_Usuario_Auditoria_Hecha.setTabla(new JTable(datos, cabeceras));
 	}
 	
 	public Vector<String> insertarCabeceras() {

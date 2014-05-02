@@ -47,7 +47,8 @@ public class I_Usuario_Auditoria_Hecha {
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
-					
+		ControladorUsuarioAuditoriaHecha.getMiControladorUsuarioAuditoriaHecha().obtenerDatos();
+		
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(10, 67, 564, 405);
 		
@@ -67,10 +68,7 @@ public class I_Usuario_Auditoria_Hecha {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(scrollPane);
-		frame.getContentPane().add(labelInstrucciones);
 		frame.getContentPane().add(botonAtras);
-		frame.getContentPane().add(botonCancelar);
-		frame.getContentPane().add(botonCancelar);
 		frame.setVisible(true);
 	}
 }

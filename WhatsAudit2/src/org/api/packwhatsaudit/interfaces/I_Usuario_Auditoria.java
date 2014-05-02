@@ -84,7 +84,6 @@ public class I_Usuario_Auditoria {
 		frame.getContentPane().add(labelInstrucciones);
 		frame.getContentPane().add(botonAceptar);
 		frame.getContentPane().add(botonCancelar);
-		frame.getContentPane().add(botonCancelar);
 		frame.setVisible(true);
 	}
 }

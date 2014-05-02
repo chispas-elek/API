@@ -49,7 +49,7 @@ public class ListaRespuestas {
 		ArrayList<Respuesta> lasResp = new ArrayList<Respuesta>();
 		try {
 			Conector conector = Conector.getConector();
-			String consulta = "SELECT * FROM respuesta WHERE idAuditoria=" + pIdAuditoria + "' AND fecha='"+pFecha+"' AND idUsuario=" + pUsuario +";";
+			String consulta = "SELECT * FROM respuesta WHERE idAuditoria=" + pIdAuditoria + " AND fecha='"+pFecha+"' AND idUsuario=" + pUsuario +";";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
 				lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
