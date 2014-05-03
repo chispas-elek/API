@@ -69,4 +69,28 @@ public class ListaAuditorias {
 		}
 		return nombreAudit;
 	}
+	
+	/**
+	 * Borra los datos de una auditoria solo si éxta nunca ha sido contestada
+	 * 
+	 * @param pIdAuditoria El identificador de la auditoria
+	 */
+	public void borrarAuditoria (int pIdAuditoria) {
+		boolean contestada = false;
+		try {
+			Conector conector = Conector.getConector();
+			String consulta1 = "SELECT * FROM respuesta WHERE idAuditoria = "+pIdAuditoria+";";
+			ResultSet rs = conector.execSQL(consulta1);
+			if(rs.next()) {
+				//Si entra aquí es que entonces la auditoria ya ha sido contestada por un usuario y no la vamos a borrar
+				contestada = true;
+			}
+			if(!contestada) {
+				String consulta2 = "DELETE FROM Auditoria WHERE idAuditoria="+pIdAuditoria+";"; 
+				conector.execSQL(consulta2);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

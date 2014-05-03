@@ -45,4 +45,24 @@ public class ListaPreguntas {
 			conector.execSQL(consulta);
 		}
 	}
+	
+	/**
+	 * Metodo que dado el id de una pregunta me devuelve su String asociado
+	 * @param idPregunta El identificador de la pregunta
+	 * @return El texto de la pregunta
+	 */
+	public String obtenerNombrePregunta (int idPregunta) {
+		String pregunta = new String();
+		try {
+			Conector conector = Conector.getConector();
+			String consulta = "Select nombrePregunta from pregunta where idPregunta="+idPregunta+";";
+			ResultSet rs = conector.execSQL(consulta);
+			while(rs.next()) {
+				pregunta = rs.getString("nombrePregunta");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pregunta;
+	}
 }

@@ -1,8 +1,12 @@
 package org.api.packwhatsaudit.modelo;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 public class ListaRespuestas {
@@ -95,8 +99,14 @@ public class ListaRespuestas {
 		return lRespuestas.iterator();
 	}
 	
+	/**
+	 * Obtiene la hora actual del sistema y la transforma en formato String para adaptarla a la base de datos
+	 * @return La fecha actual en String
+	 */
+	
 	private String fechaDeHoy() {
-		return "Hoy";
+		Calendar cal = GregorianCalendar.getInstance();
+		return cal.getTime().toString();
 	}
 	
 	public ArrayList<Respuesta> obtenerAuditoriasUsuarioNoRepetidas(Usuario pUsuario) {

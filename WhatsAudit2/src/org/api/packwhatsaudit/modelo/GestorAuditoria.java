@@ -1,6 +1,7 @@
 package org.api.packwhatsaudit.modelo;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class GestorAuditoria {
 
@@ -78,5 +79,26 @@ public class GestorAuditoria {
 	public String obtenerNombreAuditoria(int pId) {
 		ListaAuditorias lAudit = new ListaAuditorias();
 		return lAudit.obtenerNombreAuditoria(pId);
+	}
+	
+	/**
+	 * Borra los datos de una auditoria solo si éxta nunca ha sido contestada
+	 * 
+	 * @param pIdAuditoria El identificador de la auditoria
+	 */
+	public void borrarAuditoria (int pIdAuditoria) {
+		ListaAuditorias lAudit = new ListaAuditorias();
+		lAudit.borrarAuditoria(pIdAuditoria);
+	}
+	
+	
+	/**
+	 * Metodo que dado el id de una pregunta me devuelve su String asociado
+	 * @param idPregunta El identificador de la pregunta
+	 * @return El texto de la pregunta
+	 */
+	public String obtenerNombrePregunta (int idPregunta) {
+		ListaPreguntas lPreg = new ListaPreguntas();
+		return lPreg.obtenerNombrePregunta(idPregunta);
 	}
 }
