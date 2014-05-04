@@ -56,7 +56,14 @@ public class ControladorUsuario {
 	
 	public void abrirHistorico() {
 		ControladorUsuarioHistorico.setUsuario(usuario);
-		I_Usuario_Historico.getMiIUsuarioHistorico();
+		I_Usuario_Historico.getIUsuarioHistorico();
 		I_Usuario.getFrame().dispose();
+	}
+	
+	public void volverLogin() {
+		I_Usuario.getFrame().dispose();
+		I_Login.getFrame().setVisible(true);
+		I_Login.getTextFieldUsuario().setText("");
+		I_Login.getPasswordFieldContraseña().setText("");
 	}
 }

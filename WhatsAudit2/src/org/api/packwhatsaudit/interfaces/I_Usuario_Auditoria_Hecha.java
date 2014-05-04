@@ -3,22 +3,19 @@ package org.api.packwhatsaudit.interfaces;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoriaHecha;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoriaHecha;
 
 public class I_Usuario_Auditoria_Hecha {
 
 	//ATRIBUTOS
 	private static I_Usuario_Auditoria_Hecha miIUsuarioAuditoriaHecha;
 	private static JFrame frame;
-	private JLabel labelInstrucciones;
 	private JScrollPane scrollPane;
 	private static JTable tabla;
 	private JButton botonAtras;
-	private JButton botonCancelar;
 
 	//MÉTODO CONSTRUCTOR	
 	private I_Usuario_Auditoria_Hecha() {

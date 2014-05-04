@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JTable;
-import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Auditoria_Hecha;
 import org.api.packwhatsaudit.interfaces.I_Usuario_Historico;
 import org.api.packwhatsaudit.modelo.GestorAuditoria;
@@ -90,7 +89,7 @@ public class ControladorUsuarioAuditoriaHecha {
 			respuestaActual = itr.next();
 			vectorActual = new Vector();
 			vectorActual.add(respuestaActual.getIdPregunta());
-			vectorActual.add("");
+			vectorActual.add(GestorAuditoria.getGestorAuditoria().obtenerNombrePregunta(respuestaActual.getIdPregunta()));
 			vectorActual.add(respuestaActual.isRespuestaUno());
 			vectorActual.add(respuestaActual.isRespuestaDos());
 			vectorActual.add(respuestaActual.isRespuestaTres());

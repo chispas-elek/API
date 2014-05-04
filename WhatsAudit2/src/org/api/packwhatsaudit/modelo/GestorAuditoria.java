@@ -1,7 +1,6 @@
 package org.api.packwhatsaudit.modelo;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class GestorAuditoria {
 
@@ -90,7 +89,6 @@ public class GestorAuditoria {
 		ListaAuditorias lAudit = new ListaAuditorias();
 		lAudit.borrarAuditoria(pIdAuditoria);
 	}
-	
 	
 	/**
 	 * Metodo que dado el id de una pregunta me devuelve su String asociado

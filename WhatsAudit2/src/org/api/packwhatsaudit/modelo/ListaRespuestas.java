@@ -1,9 +1,7 @@
 package org.api.packwhatsaudit.modelo;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -24,24 +22,6 @@ public class ListaRespuestas {
 	}
 
 	//MÉTODOS DEFINIDOS
-	/*public ArrayList<Respuesta> obtenerRespuestasAuditoria(ArrayList<Pregunta> pListaP, GregorianCalendar pFecha) {
-		try {
-			Conector conector = Conector.getConector();
-			Iterator<Pregunta> itr = pListaP.iterator();
-			while (itr.hasNext()) {
-				String consulta = "SELECT *  FROM respuesta WHERE idPregunta=" + itr.next().getId() + " AND fecha='" + pFecha + "';";
-				ResultSet rs = conector.execSQL(consulta);
-				while (rs.next()) {
-					lRespuestas.add(new Respuesta(rs.getInt("idRespuesta"), rs.getBoolean("respuestaUno"), rs.getBoolean("respuestaDos"), rs.getBoolean("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta")));
-				}
-			}
-			conector.conexion.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return lRespuestas;
-	}*/
-	
 	/**
 	 * Devuelve las respuestas de una auditoria dado su identificador y la fecha
 	 * @param pIdAuditoria El identificador de la auditoria
@@ -103,7 +83,6 @@ public class ListaRespuestas {
 	 * Obtiene la hora actual del sistema y la transforma en formato String para adaptarla a la base de datos
 	 * @return La fecha actual en String
 	 */
-	
 	private String fechaDeHoy() {
 		Calendar cal = GregorianCalendar.getInstance();
 		return cal.getTime().toString();
@@ -116,7 +95,6 @@ public class ListaRespuestas {
 			String consulta = "SELECT DISTINCT idAuditoria, fecha FROM respuesta WHERE idUsuario=" + pUsuario.getId() + ";";
 			ResultSet rs = conector.execSQL(consulta);
 			while (rs.next()) {
-				//lasResp.add(new Respuesta(rs.getInt("idRespuesta"), rs.getString("respuestaUno"), rs.getString("respuestaDos"), rs.getString("respuestaTres"), rs.getString("respuestaTexto"), rs.getInt("idPregunta"),rs.getString("fecha"), rs.getInt("idUsuario"), rs.getInt("idAuditoria")));
 				lasResp.add(new Respuesta(0, null, null, null, null, 0, rs.getString("fecha"), pUsuario.getId(), rs.getInt("idAuditoria")));
 			}
 		} catch(SQLException e) {

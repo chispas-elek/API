@@ -18,7 +18,7 @@ public class ControladorLogin {
 	}
 
 	//GETTERS Y SETTERS
-	public static ControladorLogin getMiControladorLogin() {
+	public static ControladorLogin getControladorLogin() {
 		if (miControladorLogin == null) {
 			miControladorLogin = new ControladorLogin();
 		}
@@ -30,11 +30,13 @@ public class ControladorLogin {
 		Usuario usu = GestorUsuario.getGestorUsuario().comprobarUsuario(I_Login.getTextFieldUsuario().getText(), I_Login.getPasswordFieldContraseña().getText());
 		switch (usu.getTipo()) {
 		case 0:
-			I_Administrador.getMiIAdministrador();
+			I_Administrador.getIAdministrador();
+			I_Administrador.getFrame().setVisible(true);
 			I_Login.getFrame().dispose();
 			break;
 		case 1:
-			I_Usuario.getMiIUsuario();
+			I_Usuario.getIUsuario();
+			I_Usuario.getFrame().setVisible(true);
 			I_Login.getFrame().dispose();
 			ControladorUsuario.setUsuario(usu);
 			break;

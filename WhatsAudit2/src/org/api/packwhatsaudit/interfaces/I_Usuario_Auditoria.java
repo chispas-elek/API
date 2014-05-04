@@ -3,12 +3,12 @@ package org.api.packwhatsaudit.interfaces;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoria;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.api.packwhatsaudit.controlador.ControladorUsuarioAuditoria;
 
 public class I_Usuario_Auditoria {
 
@@ -48,7 +48,7 @@ public class I_Usuario_Auditoria {
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
-		ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().obtenerDatos();
+		ControladorUsuarioAuditoria.getControladorUsuarioAuditoria().obtenerDatos();
 		
 		labelInstrucciones = new JLabel("(Marcar con una X la opción deseada)");
 		labelInstrucciones.setHorizontalAlignment(SwingConstants.CENTER);
@@ -64,7 +64,7 @@ public class I_Usuario_Auditoria {
 		botonAceptar.setBounds(10, 508, 89, 23);
 		botonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().guardarDatos();
+				ControladorUsuarioAuditoria.getControladorUsuarioAuditoria().guardarDatos();
 			}
 		});
 		
@@ -72,7 +72,7 @@ public class I_Usuario_Auditoria {
 		botonCancelar.setBounds(485, 508, 89, 23);
 		botonCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorUsuarioAuditoria.getMiControladorUsuarioAuditoria().cancelarAuditoria();
+				ControladorUsuarioAuditoria.getControladorUsuarioAuditoria().cancelarAuditoria();
 			}
 		});
 				

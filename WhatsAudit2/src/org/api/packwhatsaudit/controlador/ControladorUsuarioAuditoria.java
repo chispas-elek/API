@@ -25,7 +25,7 @@ public class ControladorUsuarioAuditoria {
 	}
 
 	//GETTERS Y SETTERS
-	public static ControladorUsuarioAuditoria getMiControladorUsuarioAuditoria() {
+	public static ControladorUsuarioAuditoria getControladorUsuarioAuditoria() {
 		if (miControladorUsuarioAuditoria == null) {
 			miControladorUsuarioAuditoria = new ControladorUsuarioAuditoria();
 		}

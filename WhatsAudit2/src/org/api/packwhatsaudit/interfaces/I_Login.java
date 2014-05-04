@@ -1,6 +1,5 @@
 package org.api.packwhatsaudit.interfaces;
 
-import org.api.packwhatsaudit.controlador.ControladorLogin;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -8,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.api.packwhatsaudit.controlador.ControladorLogin;
 
 public class I_Login {
 
@@ -26,7 +26,7 @@ public class I_Login {
 	}
 
 	//GETTERS Y SETTERS
-	public static I_Login getMiILogin() {
+	public static I_Login getILogin() {
 		if (miILogin == null) {
 			miILogin = new I_Login();
 		}
@@ -65,7 +65,7 @@ public class I_Login {
 		botonEntrar.setBounds(276, 123, 129, 23);
 		botonEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorLogin.getMiControladorLogin().comprobarDatosLogin();
+				ControladorLogin.getControladorLogin().comprobarDatosLogin();
 			}
 		});
 		
@@ -85,6 +85,6 @@ public class I_Login {
 
 	//MAIN
 	public static void main(String[] args) {
-		I_Login.getMiILogin();
+		I_Login.getILogin();
 	}
 }

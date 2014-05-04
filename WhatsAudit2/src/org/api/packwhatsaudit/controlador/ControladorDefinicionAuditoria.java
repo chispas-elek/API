@@ -19,7 +19,7 @@ public class ControladorDefinicionAuditoria {
 	}
 
 	//GETTERS Y SETTERS
-	public static ControladorDefinicionAuditoria getMiControladorDefinicionAuditoria() {
+	public static ControladorDefinicionAuditoria getControladorDefinicionAuditoria() {
 		if (miControladorDefinicionAuditoria == null) {
 			miControladorDefinicionAuditoria = new ControladorDefinicionAuditoria();
 		}

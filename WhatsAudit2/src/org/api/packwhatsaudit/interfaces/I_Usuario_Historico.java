@@ -26,7 +26,7 @@ public class I_Usuario_Historico {
 	}
 
 	//GETTERS Y SETTERS
-	public static I_Usuario_Historico getMiIUsuarioHistorico() {
+	public static I_Usuario_Historico getIUsuarioHistorico() {
 		if (miIUsuarioHistorico == null) {
 			miIUsuarioHistorico = new I_Usuario_Historico();
 		}
@@ -47,7 +47,7 @@ public class I_Usuario_Historico {
 
 	//MÉTODOS DEFINIDOS
 	private void inicializarVentana() {
-		ControladorUsuarioHistorico.getMiControladorUsuarioHistorico().obtenerDatos();
+		ControladorUsuarioHistorico.getControladorUsuarioHistorico().obtenerDatos();
 		
 		labelAuditorias = new JLabel("Auditorias contestadas:");
 		labelAuditorias.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,7 +63,7 @@ public class I_Usuario_Historico {
 		botonConsultar.setBounds(441, 163, 133, 23);
 		botonConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorUsuarioHistorico.getMiControladorUsuarioHistorico().abrirAuditoria();
+				ControladorUsuarioHistorico.getControladorUsuarioHistorico().abrirAuditoria();
 			}
 		});
 				

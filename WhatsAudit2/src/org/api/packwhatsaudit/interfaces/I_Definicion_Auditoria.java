@@ -18,7 +18,7 @@ public class I_Definicion_Auditoria {
 
 	//ATRIBUTOS
 	private static I_Definicion_Auditoria miIDefinicionAuditoria;
-	private static JFrame frame;
+	private static JFrame frmAadirAuditoria;
 	private JLabel labelNombreAuditoria;
 	private static JTextField textFieldAuditoria;
 	private JLabel labelNombrePregunta;
@@ -38,7 +38,7 @@ public class I_Definicion_Auditoria {
 	}
 
 	//GETTERS Y SETTERS
-	public static I_Definicion_Auditoria getMiIDefinicion_Auditoria() {
+	public static I_Definicion_Auditoria getIDefinicion_Auditoria() {
 		if (miIDefinicionAuditoria == null) {
 			miIDefinicionAuditoria = new I_Definicion_Auditoria();
 		}
@@ -46,7 +46,7 @@ public class I_Definicion_Auditoria {
 	}
 	
 	public static JFrame getFrame() {
-		return frame;
+		return frmAadirAuditoria;
 	}
 
 	public static JTextField getTextFieldAuditoria() {
@@ -81,7 +81,6 @@ public class I_Definicion_Auditoria {
 		labelNombrePregunta = new JLabel("Nombre de la pregunta:");
 		labelNombrePregunta.setBounds(22, 65, 155, 14);
 		
-		
 		textFieldPregunta = new JTextField();
 		textFieldPregunta.setColumns(10);
 		textFieldPregunta.setBounds(200, 62, 157, 20);
@@ -103,7 +102,7 @@ public class I_Definicion_Auditoria {
 		botonAñadirPregunta.setBounds(367, 61, 107, 23);
 		botonAñadirPregunta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorDefinicionAuditoria.getMiControladorDefinicionAuditoria().añadirPreguntaLista();
+				ControladorDefinicionAuditoria.getControladorDefinicionAuditoria().añadirPreguntaLista();
 			}
 		});
 		
@@ -111,7 +110,7 @@ public class I_Definicion_Auditoria {
 		botonEliminarPregunta.setBounds(329, 342, 145, 23);
 		botonEliminarPregunta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorDefinicionAuditoria.getMiControladorDefinicionAuditoria().eliminarPreguntaLista();
+				ControladorDefinicionAuditoria.getControladorDefinicionAuditoria().eliminarPreguntaLista();
 			}
 		});
 		
@@ -119,7 +118,7 @@ public class I_Definicion_Auditoria {
 		botonAnadirAuditoria.setBounds(22, 428, 145, 23);
 		botonAnadirAuditoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorDefinicionAuditoria.getMiControladorDefinicionAuditoria().añadirPreguntasYAuditoria();
+				ControladorDefinicionAuditoria.getControladorDefinicionAuditoria().añadirPreguntasYAuditoria();
 			}
 		});
 		
@@ -127,24 +126,25 @@ public class I_Definicion_Auditoria {
 		botonCancelarAuditoria.setBounds(367, 428, 89, 23);
 		botonCancelarAuditoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorDefinicionAuditoria.getMiControladorDefinicionAuditoria().cancelarAuditoria();
+				ControladorDefinicionAuditoria.getControladorDefinicionAuditoria().cancelarAuditoria();
 			}
 		});
 						
-		frame = new JFrame();
-		frame.setBounds(100, 100, 500, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(labelNombreAuditoria);
-		frame.getContentPane().add(textFieldAuditoria);
-		frame.getContentPane().add(labelNombrePregunta);
-		frame.getContentPane().add(scrollPane);
-		frame.getContentPane().add(labelPreguntas);
-		frame.getContentPane().add(botonAñadirPregunta);
-		frame.getContentPane().add(botonEliminarPregunta);
-		frame.getContentPane().add(botonAnadirAuditoria);
-		frame.getContentPane().add(botonCancelarAuditoria);
-		frame.getContentPane().add(textFieldPregunta);
-		frame.setVisible(true);
+		frmAadirAuditoria = new JFrame();
+		frmAadirAuditoria.setTitle("A\u00F1adir auditoria :: WhatsAudit");
+		frmAadirAuditoria.setBounds(100, 100, 500, 500);
+		frmAadirAuditoria.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAadirAuditoria.getContentPane().setLayout(null);
+		frmAadirAuditoria.getContentPane().add(labelNombreAuditoria);
+		frmAadirAuditoria.getContentPane().add(textFieldAuditoria);
+		frmAadirAuditoria.getContentPane().add(labelNombrePregunta);
+		frmAadirAuditoria.getContentPane().add(scrollPane);
+		frmAadirAuditoria.getContentPane().add(labelPreguntas);
+		frmAadirAuditoria.getContentPane().add(botonAñadirPregunta);
+		frmAadirAuditoria.getContentPane().add(botonEliminarPregunta);
+		frmAadirAuditoria.getContentPane().add(botonAnadirAuditoria);
+		frmAadirAuditoria.getContentPane().add(botonCancelarAuditoria);
+		frmAadirAuditoria.getContentPane().add(textFieldPregunta);
+		frmAadirAuditoria.setVisible(true);
 	}
 }
